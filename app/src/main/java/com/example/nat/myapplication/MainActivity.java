@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 case R.id.navigation_dashboard:
                     mViewPager.setCurrentItem(1);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_about:
                     mViewPager.setCurrentItem(2);
                     return true;
                 default:

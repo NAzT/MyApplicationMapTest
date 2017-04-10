@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
 import com.example.nat.myapplication.OnMapAndViewReadyListener;
+import com.example.nat.myapplication.fragment.AboutFragment;
 import com.example.nat.myapplication.fragment.FirstFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,7 +46,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter implements OnMapAndView
             case 1:
                 return FirstFragment.newInstance("A", "B");
             case 2:
-                return FirstFragment.newInstance("A", "B");
+                return AboutFragment.newInstance("A", "B");
             default:
                 return null;
         }
