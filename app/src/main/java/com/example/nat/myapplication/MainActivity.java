@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.nat.myapplication.adapter.MyPagerAdapter;
 import com.example.nat.myapplication.protocol.OnFragmentInteractionListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,15 +46,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                     mViewPager.setCurrentItem(2);
                     return true;
                 default:
-//                    mTextMessage.setText("Other");
             }
 
-//            if (frag != null) {
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.add(R.id.content, frag, frag.getTag());
-//                ft.commit();
-//                Log.d(TAG, "Fragment beginTransaction: ");
-//            }
             return false;
         }
 
@@ -65,9 +60,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         ButterKnife.bind(this);
         setupViewPager(mViewPager);
 
-//        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("envisensor");
+//        myRef.child("chula").child("sensor")
     }
 
     private void setupViewPager(ViewPager viewPager) {

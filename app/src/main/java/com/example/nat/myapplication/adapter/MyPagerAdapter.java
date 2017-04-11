@@ -27,17 +27,13 @@ public class MyPagerAdapter extends FragmentPagerAdapter implements OnMapAndView
         super(fragmentManager);
     }
 
-    // Returns total number of pages
     @Override
     public int getCount() {
         return NUM_ITEMS;
     }
 
-    // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
-//        SupportMapFragment mapFragment =
-//                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         switch (position) {
             case 0:
                 SupportMapFragment mapFragment = SupportMapFragment.newInstance();
