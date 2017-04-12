@@ -7,7 +7,8 @@ import android.util.Log;
 
 import com.example.nat.myapplication.OnMapAndViewReadyListener;
 import com.example.nat.myapplication.fragment.AboutFragment;
-import com.example.nat.myapplication.fragment.FirstFragment;
+import com.example.nat.myapplication.fragment.MyPostsFragment;
+import com.example.nat.myapplication.fragment.PostListFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,12 +20,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Created by nat on 4/10/2017 AD.
  */
 
-public class MyPagerAdapter extends FragmentPagerAdapter implements OnMapAndViewReadyListener.OnGlobalLayoutAndMapReadyListener, OnMapReadyCallback {
+public class MyPagerAdapter extends FragmentPagerAdapter implements
+        OnMapAndViewReadyListener.OnGlobalLayoutAndMapReadyListener, OnMapReadyCallback {
     private static final String TAG = "MyPagerAdapter";
     private static int NUM_ITEMS = 3;
 
+    private PostListFragment postListFragment;
+
     public MyPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
+        postListFragment = new MyPostsFragment();
     }
 
     @Override
@@ -40,7 +45,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter implements OnMapAndView
                 mapFragment.getMapAsync(this);
                 return mapFragment;
             case 1:
-                return FirstFragment.newInstance("A", "B");
+                return postListFragment;
             case 2:
                 return AboutFragment.newInstance("A", "B");
             default:
@@ -48,7 +53,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter implements OnMapAndView
         }
     }
 
-    // Returns the page title for the top indicator
+    // Returns the page humid for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
         return "Page " + position;

@@ -20,7 +20,7 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 
-import models.Post;
+import models.EnviSensorModel;
 
 public abstract class PostListFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public abstract class PostListFragment extends Fragment {
     private DatabaseReference mDatabase;
     // [END define_database_reference]
 
-    private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
+    private FirebaseRecyclerAdapter<EnviSensorModel, PostViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
 
@@ -65,10 +65,10 @@ public abstract class PostListFragment extends Fragment {
 
         // Set up FirebaseRecyclerAdapter with the Query
         Query postsQuery = getQuery(mDatabase);
-        mAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post,
+        mAdapter = new FirebaseRecyclerAdapter<EnviSensorModel, PostViewHolder>(EnviSensorModel.class, R.layout.item_post,
                 PostViewHolder.class, postsQuery) {
             @Override
-            protected void populateViewHolder(final PostViewHolder viewHolder, final Post model, final int position) {
+            protected void populateViewHolder(final PostViewHolder viewHolder, final EnviSensorModel model, final int position) {
                 final DatabaseReference postRef = getRef(position);
 
                 // Set click listener for the whole post view
@@ -90,13 +90,13 @@ public abstract class PostListFragment extends Fragment {
 //                    viewHolder.starView.setImageResource(R.drawable.ic_toggle_star_outline_24);
 //                }
 
-                // Bind Post to ViewHolder, setting OnClickListener for the star button
+                // Bind EnviSensorModel to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToPost(model, new View.OnClickListener() {
                     @Override
                     public void onClick(View starView) {
                         // Need to write to both places the post is stored
 //                        DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
-//                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
+//                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.id).child(postRef.getKey());
 //
 //                        // Run two transactions
 //                        onStarClicked(globalPostRef);
@@ -113,7 +113,7 @@ public abstract class PostListFragment extends Fragment {
         postRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
-                Post p = mutableData.getValue(Post.class);
+                EnviSensorModel p = mutableData.getValue(EnviSensorModel.class);
                 if (p == null) {
                     return Transaction.success(mutableData);
                 }
