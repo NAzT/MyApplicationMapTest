@@ -65,7 +65,7 @@ public abstract class PostListFragment extends Fragment {
 
         // Set up FirebaseRecyclerAdapter with the Query
         Query postsQuery = getQuery(mDatabase);
-        mAdapter = new FirebaseRecyclerAdapter<EnviSensorModel, PostViewHolder>(EnviSensorModel.class, R.layout.item_post,
+        mAdapter = new FirebaseRecyclerAdapter<EnviSensorModel, PostViewHolder>(EnviSensorModel.class, R.layout.item_cell,
                 PostViewHolder.class, postsQuery) {
             @Override
             protected void populateViewHolder(final PostViewHolder viewHolder, final EnviSensorModel model, final int position) {
@@ -79,7 +79,7 @@ public abstract class PostListFragment extends Fragment {
                         // Launch PostDetailActivity
 //                        Intent intent = new Intent(getActivity(), PostDetailActivity.class);
 //                        intent.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
-//                        startActivity(intent);
+//                        startActivit(intent);
                     }
                 });
 

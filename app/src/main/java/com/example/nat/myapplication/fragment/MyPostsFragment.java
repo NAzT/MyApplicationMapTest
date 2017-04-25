@@ -14,6 +14,7 @@ public class MyPostsFragment extends PostListFragment {
     private DatabaseReference mDatabaseReference;
 
     public MyPostsFragment() {
+
     }
 
     @Override
