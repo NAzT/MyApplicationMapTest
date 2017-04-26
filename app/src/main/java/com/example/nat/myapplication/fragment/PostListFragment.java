@@ -76,31 +76,13 @@ public abstract class PostListFragment extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Launch PostDetailActivity
-//                        Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-//                        intent.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
-//                        startActivit(intent);
                     }
                 });
-
-//                // Determine if the current user has liked this post and set UI accordingly
-//                if (model.stars.containsKey(getUid())) {
-//                    viewHolder.starView.setImageResource(R.drawable.ic_toggle_star_24);
-//                } else {
-//                    viewHolder.starView.setImageResource(R.drawable.ic_toggle_star_outline_24);
-//                }
 
                 // Bind EnviSensorModel to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToPost(model, new View.OnClickListener() {
                     @Override
                     public void onClick(View starView) {
-                        // Need to write to both places the post is stored
-//                        DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
-//                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.id).child(postRef.getKey());
-//
-//                        // Run two transactions
-//                        onStarClicked(globalPostRef);
-//                        onStarClicked(userPostRef);
                     }
                 });
             }
@@ -150,10 +132,6 @@ public abstract class PostListFragment extends Fragment {
             mAdapter.cleanup();
         }
     }
-
-//    public String getUid() {
-////        return FirebaseAuth.getInstance().getCurrentUser().getUid();
-//    }
 
     public abstract Query getQuery(DatabaseReference databaseReference);
 

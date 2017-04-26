@@ -25,9 +25,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public static final String TAG = "MainActivity";
 
     private BottomNavigationView bottomNavigationView;
-    private ViewPager viewPager;
-    @BindView(R.id.viewpager)
-    ViewPager mViewPager;
+    @BindView(R.id.viewpager) ViewPager mViewPager;
+    @BindView(R.id.navigation) BottomNavigationView navigation;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -59,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupViewPager(mViewPager);
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();

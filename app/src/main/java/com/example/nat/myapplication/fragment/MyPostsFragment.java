@@ -11,7 +11,6 @@ import com.google.firebase.database.ValueEventListener;
 import models.EnviSensorModel;
 
 public class MyPostsFragment extends PostListFragment {
-    private DatabaseReference mDatabaseReference;
 
     public MyPostsFragment() {
 
@@ -19,9 +18,8 @@ public class MyPostsFragment extends PostListFragment {
 
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
-        mDatabaseReference = databaseReference.child("envisensor").child("chula").child("sensor");
-
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference = databaseReference.child("envisensor").child("chula").child("sensor");
+        databaseReference.addValueEventListener(new ValueEventListener() {
             public static final String TAG = "MyPostsFragment";
 
             @Override
@@ -40,6 +38,6 @@ public class MyPostsFragment extends PostListFragment {
 
             }
         });
-        return mDatabaseReference;
+        return databaseReference;
     }
 }
